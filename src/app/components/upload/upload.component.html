@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col m7">
+    <h5>Select your photos</h5>
+    <div appNgDropFiles [files]="files" (mouseUp)="mouseUp=$event" [ngClass]="{'file-over':mouseUp}" class="drop-zone">
+      <p>Drag and Drop</p>
+      <img src="assets/upload.png">
+    </div>
+
+  </div>
+  <div class="col m5">
+    <h5>Upload photos</h5>
+    <div class="row">
+      <div class="col m6">
+        <a class="btn purple lighten-1" (click)="uploadPhotos()" [ngClass]="{'disabled':files.length==0}">
+          <i class="material-icons right" >cloud_upload</i>Upload</a>
+      </div>
+      <div class="col m6">
+        <a class="btn purple lighten-3" (click)="cleanFiles()" >
+          <i class="material-icons right">delete_forever</i>clean</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class=" col m12">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Size</th>
+              <th>Progress</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let file of files" >
+              <td [ngClass]="{'green-text':file.progress>=100}">{{file.name}}</td>
+              <td>{{file.file.size/1024/1024 | number:'.2-2' }}Mb</td>
+              <td>
+                <div class="progress">
+                  <div class="determinate" [ngStyle]="{'width': file.progress + '%'}"></div>
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

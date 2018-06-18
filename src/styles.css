@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+.drop-zone{
+    border: dotted 3px purple;
+    opacity: 0.5;
+    color: #666;
+    text-align: center;
+}
+
+.drop-zone.file-over{
+    border: dotted 3px green;
+}
+
+.container {
+    width: 90%;
+}
